@@ -60,8 +60,8 @@ $.fn.placeholder = function(options) {
         //stuff in some calculated values into the placeholderCSS object
         opts.placeholderCSS['width'] = inputWidth;
         opts.placeholderCSS['height'] = inputHeight;
-        // this is because opera has super ugly bg graphics for certain input types. ugg.
-        opts.placeholderCSS['left'] = isOpera() ? '10%' : opts.placeholderCSS['left'];
+        // adjust position of placeholder to accomodate opera's super ugly 'email' and 'url' graphics
+        opts.placeholderCSS.left = (isOpera() && this.getAttribute('type')==='email' || isOpera() && this.getAttribute('type')==='url') ? '11%' : '5px';
         placeholder.css(opts.placeholderCSS);
     
     //place the placeholder if the input is empty
