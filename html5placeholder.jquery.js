@@ -35,7 +35,9 @@ $.fn.placeholder = function(options) {
   };
   
   //merge in passed in options, if any
-  var opts = $.extend(defaults, options);
+  var opts = $.extend(defaults, options),
+  //cache the original 'left' value, for use by Opera later
+  o_left = opts.placeholderCSS.left;
   
   //sniffy sniff sniff
   var isOpera = function() {
@@ -61,7 +63,7 @@ $.fn.placeholder = function(options) {
         opts.placeholderCSS['width'] = inputWidth;
         opts.placeholderCSS['height'] = inputHeight;
         // adjust position of placeholder to accomodate opera's super ugly 'email' and 'url' graphics
-        opts.placeholderCSS.left = (isOpera() && this.getAttribute('type')==='email' || isOpera() && this.getAttribute('type')==='url') ? '11%' : '5px';
+        opts.placeholderCSS.left = (isOpera() && this.getAttribute('type')==='email' || isOpera() && this.getAttribute('type')==='url') ? '11%' : o_left;
         placeholder.css(opts.placeholderCSS);
     
     //place the placeholder if the input is empty
