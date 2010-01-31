@@ -10,4 +10,4 @@ Enables cross-browser* html5 placeholder for inputs, by first testing for a nati
 
 `<input type="text" placeholder="username">`
 
-###*NOTE: This is totally untested in IE (or any Windows-based browser right now)
+###*NOTE: Still needs some style work for IE6, but working everywhere else.
