@@ -5,7 +5,7 @@
 // Enables cross-browser* html5 placeholder for inputs, by first testing
 // for a native implementation before building one.
 //
-// *NOTE: This is totally untested in IE (or any Windows-based browser right now)
+// *NOTE: Totally busted in ie6. Trying to decide how much I care.
 //
 // USAGE: 
 //$('input[placeholder]').placeholder();
