@@ -37,6 +37,11 @@ $.fn.placeholder = function(options) {
   //merge in passed in options, if any
   var opts = $.extend(defaults, options);
   
+  //sniffy sniff sniff
+  var isOpera = function() {
+    return $.browser.opera;
+  };
+  
   //first test for native placeholder support before continuing
   //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
   return ('placeholder' in document.createElement('input')) ? this : this.each(function() {
@@ -56,7 +61,7 @@ $.fn.placeholder = function(options) {
         opts.placeholderCSS['width'] = inputWidth;
         opts.placeholderCSS['height'] = inputHeight;
         // this is because opera has super ugly bg graphics for certain input types. ugg.
-        opts.placeholderCSS['left'] = $.browser.opera ? '10%' : opts.placeholderCSS['left'];
+        opts.placeholderCSS['left'] = isOpera() ? '10%' : opts.placeholderCSS['left'];
         placeholder.css(opts.placeholderCSS);
     
     //place the placeholder if the input is empty
