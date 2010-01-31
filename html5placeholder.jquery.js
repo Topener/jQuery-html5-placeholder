@@ -1,4 +1,4 @@
-// HTML5 placeholder plugin
+// HTML5 placeholder plugin version 0.2
 // Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
 // MIT Licensed: http://www.opensource.org/licenses/mit-license.php
 //
