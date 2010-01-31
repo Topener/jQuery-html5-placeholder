@@ -38,7 +38,8 @@ $.fn.placeholder = function(options) {
   var opts = $.extend(defaults, options);
   
   //first test for native placeholder support before continuing
-  return ((typeof this[0].placeholder !== 'undefined')) ? this : this.each(function() {
+  //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
+  return ('placeholder' in document.createElement('input')) ? this : this.each(function() {
     
     //local vars
     var $this = $(this),
