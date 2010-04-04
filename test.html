@@ -8,6 +8,9 @@
   <script>
     $(function(){
       $(':input[placeholder]').placeholder();
+      //-- Make sure we don't break if someone applies this to an element that
+      //   doesn't have a placeholder
+      $('#noPlace').placeholder();
     });
   </script>
   <style>
@@ -25,7 +28,7 @@
     <label for="foo">Password: </label>
     <input type="password" id="pw" placeholder="It's like, your password" />
   </div>
- 
+
         <div>
           <label>Text:
             <input type="text" name="text" maxlength="6" placeholder="Hi Mom"/>
@@ -41,16 +44,22 @@
           <label>Telephone:
             <input type="tel" name="text" placeholder="(XXX) XXX-XXXX"/>
           </label>
-        </div> 
+        </div>
         <div>
 
           <label>URL:
             <input type="url" id="url" name="earl" placeholder="http://miketaylr.com" />
           </label>
+
         </div>
 
+        <div>
+          <label>No Placeholder:
+            <input type="text" id="noPlace" name="noPlace" maxlength="6"/>
+          </label>
+        </div>
         <input type="submit" />
       </form>
-  
+
 </body>
 </html>
