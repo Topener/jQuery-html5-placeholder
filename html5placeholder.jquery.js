@@ -1,11 +1,6 @@
-// HTML5 placeholder plugin version 0.3.1
+// HTML5 placeholder plugin version 0.3.2
 // Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
-// Modified by Matt Farmer, http://mattfarmer.net | http://github.com/m14t to:
-//   - Added support for IE6 (or at least 6.0.2800.1106)
-//   - Added check to only work if placeholder attribute actually exsists
-//   - Added Closure Compiler options to source
-//   - Don't use ID's that start with numbers (this is applying backwards compatibility afterall)
-//   - Do a better job at creating unique ID's
+// Modified by Matt Farmer, http://mattfarmer.net | http://github.com/m14t
 
 // MIT Licensed: http://www.opensource.org/licenses/mit-license.php
 //
@@ -41,21 +36,25 @@
 
     //first test for native placeholder support before continuing
     //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
-    return ('placeholder' in document.createElement('input')) ? this : this.each(function(index) {
+    this.each(
+      function(index) {
+	
+	      if ( "undefined" === typeof(document.createElement(this.tagName.toLowerCase()).placeholder)) {	      
+  
+          //local vars
+          var $this = $(this);
 
-      //local vars
-      var $this = $(this);
-      if ( "undefined" !== typeof($this.attr('placeholder')) ) {
-        var inputVal = $.trim($this.val()),
-            inputWidth = $this.width(),
-            inputHeight = $this.height(),
-            //grab the inputs id for the <label for>, or make a new one from the Date
-            //ids can start with numbers in html5, but if we're using this plugin its because its not supported
-            //Also, use the index here so we don't get dup ID's (it's happened).
-            inputId = ($this.attr('id') !== '') ? $this.attr('id') : 'id'+ new Date().getTime() +index,
-            placeholderText = $this.attr('placeholder'),
-            placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
-
+          if ( "undefined" !== typeof($this.attr('placeholder') && null !== $this.attr('placeholder')) ) {
+            var inputVal = $.trim($this.val()),
+              inputWidth = $this.width(),
+              inputHeight = $this.height(),
+              //grab the inputs id for the <label for>, or make a new one from the Date
+              //ids can start with numbers in html5, but if we're using this plugin its because its not supported
+              //Also, use the index here so we don't get dup ID's (it's happened).
+              inputId = ($this.attr('id') !== '') ? $this.attr('id') : 'id'+ new Date().getTime() +index,
+              placeholderText = $this.attr('placeholder'),
+              placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
+    
             //stuff in some calculated values into the placeholderCSS object
             opts.placeholderCSS['width'] = inputWidth;
             opts.placeholderCSS['height'] = inputHeight;
@@ -64,28 +63,31 @@
             // adjust position in IE6
             opts.placeholderCSS.top = isIE6() ? ($this.outerHeight()-opts.placeholderCSS['height']) : o_top;
             placeholder.css(opts.placeholderCSS);
-
-        //place the placeholder if the input is empty
-        if (!inputVal){
-          $this.wrap(opts.inputWrapper);
-          $this.attr('id', inputId).after(placeholder);
-        };
-
-        //hide placeholder on focus
-        $this.focus(function(){
-          if (!$.trim($this.val())){
-           $this.next().hide();
-          };
-        });
-
-        //show placeholder if the input is empty
-        $this.blur(function(){
-          if (!$.trim($this.val())){
-            $this.next().show();
-          };
-        });
-      }
-    });
+ 
+            //place the placeholder if the input is empty
+            if (!inputVal){
+              $this.wrap(opts.inputWrapper);
+              $this.attr('id', inputId).after(placeholder);
+            };
+    
+            //hide placeholder on focus
+            $this.focus(function(){
+              if (!$.trim($this.val())){
+                $this.next().hide();
+              };
+            });
+    
+            //show placeholder if the input is empty
+            $this.blur(function(){
+              if (!$.trim($this.val())){
+                $this.next().show();
+              };
+            });
+          } //-- Placeholder is set
+        } //-- Placeholder is supported on this element
+      } //-- $.each() function
+    ); //-- $.each()
+    return this;
   };
 
   //expose defaults
