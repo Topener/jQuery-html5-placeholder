@@ -15,6 +15,11 @@
     div {margin-bottom:10px;}
     .floatLeft { float: left; }
     .floatRight { float: right; }
+    .clearfix:before, .clearfix:after {
+      content: "\0020"; display: block; height: 0; visibility: hidden; 
+    }
+    .clearfix:after { clear: both; }
+    .clearfix { zoom: 1; }
   </style>
 </head>
 <body>
@@ -47,14 +52,15 @@
       <input type="url" id="url" name="earl" placeholder="http://miketaylr.com">
     </label>
   </div>
-  <div>
+  <div class="clearfix">
     <label>Floated Left:
       <input class="floatLeft" type="text" id="floatLeft" name="floatLeft" placeholder="Sample Text">
     </label>
   </div>
-  <div>
-    <label>Floated Right:
+  <div class="clearfix">
+    <label>
       <input class="floatRight" type="text" id="floatRight" name="floatRight" placeholder="Sample Text">
+      Floated Right:
     </label>
   </div>
   <input type="submit">

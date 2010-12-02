@@ -32,6 +32,7 @@
       var $this = $(this),
           inputVal = $.trim($this.val()),
           inputWidth = $this.width(),
+          inputOuterWidth = $this.outerWidth(),
           inputHeight = $this.height(),
           inputFloat = $this.css('float'),
 
@@ -51,7 +52,7 @@
     
       //place the placeholder if the input is empty
       if (!inputVal){
-        $this.wrap(options.inputWrapper).parent().css('float', inputFloat);
+        $this.wrap(options.inputWrapper).parent().css({float: inputFloat, width: inputOuterWidth});
         $this.attr('id', inputId).after(placeholder);
       };
     
