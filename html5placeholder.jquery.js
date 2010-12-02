@@ -33,6 +33,7 @@
           inputVal = $.trim($this.val()),
           inputWidth = $this.width(),
           inputHeight = $this.height(),
+          inputFloat = $this.css('float'),
 
           //grab the inputs id for the <label @for>, or make a new one from the Date
           inputId = (this.id) ? this.id : 'placeholder' + (+new Date()),
@@ -50,7 +51,7 @@
     
       //place the placeholder if the input is empty
       if (!inputVal){
-        $this.wrap(options.inputWrapper);
+        $this.wrap(options.inputWrapper).parent().css('float', inputFloat);
         $this.attr('id', inputId).after(placeholder);
       };
     
