@@ -6,85 +6,89 @@
 // for a native implementation before building one.
 //
 //
-// USAGE: 
+// USAGE:
 //$('input[placeholder]').placeholder();
 
 // <input type="text" placeholder="username">
 (function($){
   //feature detection
   var hasPlaceholder = 'placeholder' in document.createElement('input');
-  
+
   //sniffy sniff sniff -- just to give extra left padding for the older
   //graphics for type=email and type=url
   var isOldOpera = $.browser.opera && $.browser.version < 10.5;
 
   $.fn.placeholder = function(options) {
     //merge in passed in options, if any
-    var options = $.extend({}, $.fn.placeholder.defaults, options),
+    options = $.extend({}, $.fn.placeholder.defaults, options);
     //cache the original 'left' value, for use by Opera later
-    o_left = options.placeholderCSS.left;
-  
+    o_left = options.placeholderCSS['padding-left'];
+
     //first test for native placeholder support before continuing
     //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
     return (hasPlaceholder) ? this : this.each(function() {
-    
+
       //local vars
       var $this = $(this),
           inputVal = $.trim($this.val()),
           inputWidth = $this.width(),
           inputOuterWidth = $this.outerWidth(),
-          inputHeight = $this.height(),
+          inputOuterHeight = $this.outerHeight(),
           inputFloat = $this.css('float'),
 
           //grab the inputs id for the <label @for>, or make a new one from the Date
           inputId = (this.id) ? this.id : 'placeholder' + (+new Date()),
           placeholderText = $this.attr('placeholder'),
           placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
-        
-          //stuff in some calculated values into the placeholderCSS object
-          options.placeholderCSS['width'] = inputWidth;
-          options.placeholderCSS['height'] = inputHeight;
 
-          // adjust position of placeholder 
-          options.placeholderCSS.left = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
-            '11%' : o_left;
+          // adjust position of placeholder
+          options.placeholderCSS['padding-left'] = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
+            parseInt(options.placeholderCSS['padding-left'],10)+14 : o_left;
+          
+
+          //stuff in some calculated values into the placeholderCSS object
+          options.placeholderCSS.width = inputOuterWidth - parseInt(options.placeholderCSS['padding-left'],10);
+          options.placeholderCSS.height = inputOuterHeight;
+          options.placeholderCSS['line-height'] = inputOuterHeight+'px';
+
           placeholder.css(options.placeholderCSS);
-    
+
       //place the placeholder if the input is empty
       if (!inputVal){
         $this.wrap(options.inputWrapper).parent().css({float: inputFloat, width: inputOuterWidth});
         $this.attr('id', inputId).after(placeholder);
-      };
-    
+      }
+
       //hide placeholder on focus
       $this.focus(function(){
         if (!$.trim($this.val())){
          $this.next().hide();
-        };
+        }
       });
-    
+
       //show placeholder if the input is empty
       $this.blur(function(){
         if (!$.trim($this.val())){
           $this.next().show();
-        };
+        }
       });
     });
   };
-  
+
   //expose defaults
   $.fn.placeholder.defaults = {
     //you can pass in a custom wrapper
-    inputWrapper: '<span style="position:relative"></span>',
-  
+    inputWrapper: '<span style="position:relative; display: inline-block;"></span>',
+
     //more or less just emulating what webkit does here
     //tweak to your hearts content
     placeholderCSS: {
-      'font':'0.75em sans-serif', 
-      'color':'#bababa', 
-      'position': 'absolute', 
-      'left':'5px',
-      'top':'3px', 
+      'font':'0.75em sans-serif',
+      'color':'#bababa',
+      'position': 'absolute',
+      'left':'0px',
+      'top':'0px',
+      'padding-left':'5px',
       'overflow-x': 'hidden'
     }
   };
