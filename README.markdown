@@ -1,27 +1,23 @@
-# HTML5 placeholder plugin, version 0.3.2
+# HTML5 placeholder plugin, version 1.01
 Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
-Modified by Matt Farmer, http://mattfarmer.net | http://github.com/m14t
 
 MIT Licensed: http://www.opensource.org/licenses/mit-license.php
 
-Enables cross-browser* html5 placeholder for inputs, by first testing for a native implementation before building one.
+Enables cross-browser html5 placeholder for inputs, by first testing for a native implementation before building one.
+Special thanks to Ben Alman (http://benalman.com/) for suggesting a number of improvements.
 
-##USAGE:
+The general strategy is one of adding a "position: absolute" label *on top of* the input element.
+
+## Known Issues
+
+Firefox pre-filling input items causes issues.  A possible workaround is to also set `autocomplete=false` on the input element(s) in question, if this makes user experience sense to do so (e.g. perhaps on a search box, but not the username field).
+
+## USAGE: 
 `$('input[placeholder]').placeholder();`
+
+`$('input[placeholder]').placeholder({
+   color: '#bada55'
+});`
 
 `<input type="text" placeholder="username">`
 
-###CHANGELOG:
-#### 0.3.2
- * Added check for null placeholder attribute
- * Added support for <textarea>s in browsers that support the placeholder tag only on input elements (safari)
-
-#### 0.3.1
- * Added support for IE6 (or at least 6.0.2800.1106)
- * Added check to only work if placeholder attribute actually exsists
- * Added Closure Compiler options to source
- * Don't use ID's that start with numbers (this is applying backwards compatibility afterall)
- * Do a better job at creating unique ID's
-
-#### 0.3
- * Fork from http://github.com/miketaylr/jQuery-html5-placeholder
