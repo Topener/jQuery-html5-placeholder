@@ -37,8 +37,8 @@
           //grab the inputs id for the <label @for>, or make a new one from the Date
           inputId = (this.id) ? this.id : 'placeholder' + (+new Date()),
           placeholderText = $this.attr('placeholder'),
-          placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
-        
+          placeholder = $('<label for='+ inputId +'/>').text(placeholderText);
+console.log(placeholderText);        
           //stuff in some calculated values into the placeholderCSS object
           options.placeholderCSS['width'] = inputWidth;
           options.placeholderCSS['height'] = inputHeight;
