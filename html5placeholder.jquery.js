@@ -37,7 +37,7 @@
           //grab the inputs id for the <label @for>, or make a new one from the Date
           inputId = (this.id) ? this.id : 'placeholder' + (+new Date()),
           placeholderText = $this.attr('placeholder'),
-          placeholder = $('<label for='+ inputId +'/>').text(placeholderText);        
+          placeholder = $('<label for='+ inputId +'/>').addClass("html5placeholder").text(placeholderText);        
           //stuff in some calculated values into the placeholderCSS object
           options.placeholderCSS['width'] = inputWidth;
           options.placeholderCSS['height'] = inputHeight;
@@ -54,18 +54,22 @@
       };
     
       //hide placeholder on focus
-      $this.focus(function(){
-        if (!$.trim($this.val())){
-         $this.next().hide();
-        };
-      });
-    
-      //show placeholder if the input is empty
-      $this.blur(function(){
-        if (!$.trim($this.val())){
-          $this.next().show();
-        };
-      });
+      $this.focus(function() {
+           if (!$.trim($this.val())) {
+               var next = $this.siblings('.html5placeholder').each(function(index, element) {
+                   $(element).hide();
+               });
+           }
+       });
+
+       //show placeholder if the input is empty
+       $this.blur(function() {
+           if (!$.trim($this.val())) {
+               var next = $this.siblings('.html5placeholder').each(function(index, element) {
+                   $(element).show();
+               });
+           }
+       });
     });
   };
   
