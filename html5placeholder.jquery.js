@@ -27,6 +27,7 @@
     //first test for native placeholder support before continuing
     //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
     return (hasPlaceholder) ? this : this.each(function() {
+  	  //TODO: if this element already has a placeholder, exit
     
       //local vars
       var $this = $(this),
@@ -48,23 +49,26 @@
             '11%' : o_left;
           placeholder.css(options.placeholderCSS);
     
-      //place the placeholder if the input is empty
-      if (!inputVal){
-        $this.wrap(options.inputWrapper);
-        $this.attr('id', inputId).after(placeholder);
+      //place the placeholder
+      $this.wrap(options.inputWrapper);
+      $this.attr('id', inputId).after(placeholder);
+      
+      //if the input isn't empty
+      if (inputVal){
+        placeholder.hide();
       };
     
       //hide placeholder on focus
       $this.focus(function(){
         if (!$.trim($this.val())){
-         $this.next().hide();
+          placeholder.hide();
         };
       });
     
       //show placeholder if the input is empty
       $this.blur(function(){
         if (!$.trim($this.val())){
-          $this.next().show();
+          placeholder.show();
         };
       });
     });
