@@ -40,15 +40,15 @@
           placeholderText = $this.attr('placeholder'),
           placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
         
-          //stuff in some calculated values into the placeholderCSS object
-          options.placeholderCSS['width'] = inputWidth;
-          options.placeholderCSS['height'] = inputHeight;
-          options.placeholderCSS['color'] = options.color;
+      //stuff in some calculated values into the placeholderCSS object
+      options.placeholderCSS['width'] = inputWidth;
+      options.placeholderCSS['height'] = inputHeight;
+      options.placeholderCSS['color'] = options.color;
 
-          // adjust position of placeholder 
-          options.placeholderCSS.left = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
-            '11%' : o_left;
-          placeholder.css(options.placeholderCSS);
+      // adjust position of placeholder 
+      options.placeholderCSS.left = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
+         '11%' : o_left;
+      placeholder.css(options.placeholderCSS);
     
       //place the placeholder
       $this.wrap(options.inputWrapper);
@@ -78,7 +78,7 @@
   //expose defaults
   $.fn.placeholder.defaults = {
     //you can pass in a custom wrapper
-    inputWrapper: '<span style="position:relative"></span>',
+    inputWrapper: '<span style="position:relative; display:block;"></span>',
   
     //more or less just emulating what webkit does here
     //tweak to your hearts content
@@ -88,7 +88,8 @@
       'position': 'absolute', 
       'left':'5px',
       'top':'3px', 
-      'overflow-x': 'hidden'
+      'overflow-x': 'hidden',
+			'display': 'block'
     }
   };
 })(jQuery);
