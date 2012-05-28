@@ -43,7 +43,11 @@
       //stuff in some calculated values into the placeholderCSS object
       options.placeholderCSS['width'] = inputWidth;
       options.placeholderCSS['height'] = inputHeight;
-      options.placeholderCSS['color'] = options.color;
+      
+	  //add css attributes passed throw options
+      for(var opt in options){
+    	  options.placeholderCSS[opt] = options[opt];
+      }
 
       // adjust position of placeholder 
       options.placeholderCSS.left = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
