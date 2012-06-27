@@ -36,7 +36,7 @@
           inputHeight = $this.height(),
 
           //grab the inputs id for the <label @for>, or make a new one from the Date
-          inputId = (this.id) ? this.id : 'placeholder' + (+new Date()),
+          inputId = (this.id) ? this.id : 'placeholder' + (Math.floor(Math.random() * 1123456789)),
           placeholderText = $this.attr('placeholder'),
           placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
         
