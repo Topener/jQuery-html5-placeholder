@@ -32,18 +32,14 @@
       //local vars
       var $this = $(this),
           inputVal = $.trim($this.val()),
-          inputWidth = $this.width(),
-          inputHeight = $this.height(),
 
           //grab the inputs id for the <label @for>, or make a new one from the Date
           inputId = (this.id) ? this.id : 'placeholder' + (Math.floor(Math.random() * 1123456789)),
           placeholderText = $this.attr('placeholder'),
           placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
-        
-      //stuff in some calculated values into the placeholderCSS object
-      options.placeholderCSS['width'] = inputWidth;
-      options.placeholderCSS['height'] = inputHeight;
-      options.placeholderCSS['color'] = options.color;
+
+          //add cursor type to give input effect over placeholder
+          options.placeholderCSS.cursor = 'text';
 
       // adjust position of placeholder 
       options.placeholderCSS.left = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
