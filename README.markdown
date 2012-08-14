@@ -1,3 +1,5 @@
+### Note: This repo is mostly unmaintained by me (as you can see from the Issues). If anyone is interested in taking over ownership officially, please comment in issue #21. 
+
 # HTML5 placeholder plugin, version 1.01
 Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
 
