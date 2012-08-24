@@ -27,11 +27,15 @@
     //first test for native placeholder support before continuing
     //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
     return (hasPlaceholder) ? this : this.each(function() {
-  	  //TODO: if this element already has a placeholder, exit
-    
+      var $this = $(this);
+
+      // don't install twice
+      if ($this.data('placeholder-shim') != undefined && $this.data('placeholder-shim') != null) {
+        return;
+      }
+      
       //local vars
-      var $this = $(this),
-          inputVal = $.trim($this.val()),
+      var inputVal = $.trim($this.val()),
           inputWidth = $this.width(),
           inputHeight = $this.height(),
 
@@ -39,6 +43,8 @@
           inputId = (this.id) ? this.id : 'placeholder' + (Math.floor(Math.random() * 1123456789)),
           placeholderText = $this.attr('placeholder'),
           placeholder = $('<label for='+ inputId +'>'+ placeholderText + '</label>');
+
+      $this.data('placeholder-shim', placeholder)
         
       //stuff in some calculated values into the placeholderCSS object
       options.placeholderCSS['width'] = inputWidth;
