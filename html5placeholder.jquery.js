@@ -16,7 +16,7 @@
   
   //sniffy sniff sniff -- just to give extra left padding for the older
   //graphics for type=email and type=url
-  var isOldOpera = $.browser.opera && $.browser.version < 10.5;
+  var isOldOpera = window.opera && parseFloat(window.opera.version()) < 10.5;
 
   $.fn.placeholder = function(options) {
     //merge in passed in options, if any
