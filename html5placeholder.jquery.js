@@ -43,7 +43,7 @@
       //stuff in some calculated values into the placeholderCSS object
       options.placeholderCSS['width'] = inputWidth;
       options.placeholderCSS['height'] = inputHeight;
-      options.placeholderCSS['color'] = options.color;
+      options.placeholderCSS['color'] = options.placeholderCSS.color;
 
       // adjust position of placeholder 
       options.placeholderCSS.left = (isOldOpera && (this.type == 'email' || this.type == 'url')) ?
