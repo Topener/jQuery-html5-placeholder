@@ -1,6 +1,7 @@
 // HTML5 placeholder plugin version 1.01
 // Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
 // MIT Licensed: http://www.opensource.org/licenses/mit-license.php
+// GitHub: https://github.com/Topener/jQuery-html5-placeholder
 //
 // Enables cross-browser HTML5 placeholder for inputs, by first testing
 // for a native implementation before building one.
