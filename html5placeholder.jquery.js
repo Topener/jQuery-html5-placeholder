@@ -89,7 +89,8 @@
       'left':'5px',
       'top':'3px', 
       'overflow-x': 'hidden',
-			'display': 'block'
+      'display': 'block',
+      'cursor': 'text'
     }
   };
 })(jQuery);
