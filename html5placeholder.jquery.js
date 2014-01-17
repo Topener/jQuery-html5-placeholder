@@ -5,6 +5,8 @@
 // Enables cross-browser HTML5 placeholder for inputs, by first testing
 // for a native implementation before building one.
 //
+// This is from the fork by Adam Lynch; https://github.com/adam-lynch/jQuery-html5-placeholder
+//
 //
 // USAGE: 
 //$('input[placeholder]').placeholder();
