@@ -21,7 +21,7 @@
   $.fn.placeholder = function(options) {
     var inheritStyle = false;//assume that default styling should be set
 
-    if("undefined" !== options.inheritStyle){
+    if("undefined" !== typeof options.inheritStyle){
 
         if( options.inheritStyle){
             inheritStyle = true;
