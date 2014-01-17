@@ -22,7 +22,7 @@ Firefox pre-filling input items causes issues.  A possible workaround is to also
 });`
 
 `$('input[placeholder]').placeholder({
-   inheritStyle: true //no default styles will be applied
+   inheritStyle: true /*no default styles will be applied*/
 });`
 
 `<input type="text" placeholder="username">`
