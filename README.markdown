@@ -1,4 +1,4 @@
-### Note: I recently took over this plugin. I will address all current issues in a short time. Please bear with me.
+### Note: I'm maintaining this fork, more up to date than the original repo.
 
 # HTML5 placeholder plugin, version 1.01
 Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
