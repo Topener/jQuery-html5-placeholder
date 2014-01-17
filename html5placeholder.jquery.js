@@ -19,11 +19,24 @@
   var isOldOpera = window.opera && parseFloat(window.opera.version()) < 10.5;
 
   $.fn.placeholder = function(options) {
-    //merge in passed in options, if any
-    var options = $.extend({}, $.fn.placeholder.defaults, options),
+    var inheritStyle = false;//assume that default styling should be set
+
+    if("undefined" !== typeof options.inheritStyle){
+
+        if( options.inheritStyle){
+            inheritStyle = true;
+        }
+        else {//it was passed, but as a falsy value
+            delete options.inheritStyle; //remove so it's not added to element later
+        }
+    }
+
+    //merge in passed in options, if any and inheritStyle was not specified
+    options = inheritStyle ? {} : $.extend( {}, $.fn.placeholder.defaults, options );
+
     //cache the original 'left' value, for use by Opera later
-    o_left = options.placeholderCSS.left;
-  
+    var o_left = options.placeholderCSS.left;
+
     //first test for native placeholder support before continuing
     //feature detection inspired by ye olde jquery 1.4 hawtness, with paul irish
     return (hasPlaceholder) ? this : this.each(function() {

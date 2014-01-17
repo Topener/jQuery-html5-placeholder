@@ -21,5 +21,9 @@ Firefox pre-filling input items causes issues.  A possible workaround is to also
    color: '#bada55'
 });`
 
+`$('input[placeholder]').placeholder({
+   inheritStyle: true //no default styles will be applied
+});`
+
 `<input type="text" placeholder="username">`
 
