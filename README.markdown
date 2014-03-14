@@ -1,5 +1,6 @@
 # HTML5 placeholder plugin, version 1.01
-Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
+Copyright (c) 2010-2014, Rene Pot, https://github.com/Topener/
+Thanks to Mike Taylor, http://miketaylr.com for setting up initial version
 
 MIT Licensed: http://www.opensource.org/licenses/mit-license.php
 
