@@ -2,6 +2,7 @@
 // Copyright (c) 2010-2014, Rene Pot
 // Thanks to Mike Taylor, http://miketaylr.com for setting up initial version
 // MIT Licensed: http://www.opensource.org/licenses/mit-license.php
+// GitHub: https://github.com/Topener/jQuery-html5-placeholder
 //
 // Enables cross-browser HTML5 placeholder for inputs, by first testing
 // for a native implementation before building one.
